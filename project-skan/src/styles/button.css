@@ -1,0 +1,19 @@
+.btn {
+    background-color: aqua;
+}
+
+ .btn.active {
+    color: brown;
+    background-color: burlywood;
+}
+
+
+
+a.btn {
+    height: 20px;
+    width: auto;
+    padding: 2px;
+    margin: 1px;
+    border: 1px solid #000;
+    text-decoration: none;
+}

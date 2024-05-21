@@ -1,0 +1,108 @@
+@import url("./font.css");
+
+body {
+  margin: 5px;
+  text-align: center;
+}
+
+.logo {
+  width: 10%;
+  height: 105px;
+  
+}
+
+.txt {
+  color: rgb(0, 0, 0);
+  font-family: "Inter";
+  
+}
+
+.txt.test {
+  color: rgb(179, 36, 36);
+  font-family: "Bold";
+}
+
+.txt.test3 {
+  color: rgb(179, 36, 36);
+  font-family: Italic;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  justify-content: space-around;
+  max-width: 1320px;
+  width: 100%;
+  margin-left: 5%;
+  margin-right: auto;
+}
+
+.loader {
+  background-color: #d9d9d94c;
+  display: flex;
+  padding: 0.65rem;
+  border-radius: 5px;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 1s ease;
+      transition: all 1s ease; /* Время изменения цвета */
+}
+
+a:hover {
+  color: red;
+}
+
+.conteyner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+footer {
+  background-color: aqua;
+}
+
+.fon {
+  width: 185px;
+  height: 185px;
+}
+
+.cards {
+  width: 80%;
+  padding: 10px;
+  height: 200px;
+  background: red;
+  color: aliceblue;
+  margin: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto-acc {
+  width: 25px;
+  height: 25px;
+}
+
+.login {
+  display: flex;
+  margin: 0 20px;
+  justify-content: center;
+  padding: 5px;
+  
+}
+
+.box {
+  display: flex;
+  flex: 100px;
+  align-items: center;
+  justify-content: space-evenly;
+
+
+}
+
