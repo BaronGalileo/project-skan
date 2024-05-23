@@ -1,33 +1,32 @@
 import React, { Fragment } from "react";
 import { Button } from "./Button";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import { TextImage } from "./TextAndImage";
 
 
 function TestBox(){
 
     const auth = useSelector(state => state.auth)
     
-    console.log(auth.token)
-
 
     const api = `https://gateway.scan-interfax.ru/api/v1/account/balance`
     
-    if(auth.token){
-        axios.get(api, { headers: {"Authorization" : `Bearer ${auth.token}`} })
-        .then(res => {
-            console.log(res.data);
-        })}
-    // if(today>t) return alert("Вот так вот")
-    // switch (today) {
-    //     case t:
-    //       return alert(t)
-    //       break;    
-    //   }
+
+    
+
+    
+
+    // if(auth.token){
+    //     getDataFromApi(api, auth).then(res => {
+    //         console.log("l", res)
+    //     })
+
+    // }
 
 
     return(
     <Fragment>
+        <TextImage font="h1" src="./images/auth1.png">Привет</TextImage>
         <h2><span>1. Text and onClick function</span></h2>
         <Button onClick={() => {console.log("!!!!")}}>Button text</Button>
 

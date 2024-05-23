@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../store/authSlice"
+import { Text } from "../components/Text";
+import { Img } from "../components/img";
+import { TextImage } from "../components/TextAndImage";
 
 
 
@@ -34,8 +37,8 @@ function Login() {
             password: user.password
           })
         .then(res => {
-
-            dispatch(setAuth(res.data))
+            const account = {login: user.login,...res.data}
+            dispatch(setAuth(account))
         
         })
         .catch(err => console.log(err))
@@ -49,12 +52,17 @@ function Login() {
 
     return(
 
-    <div>
+    <div className="conteyner">
+        <TextImage font="h1" src="./images/auth1.png">Для оформления подписки на тариф, необходимо авторизоваться!</TextImage>
+        
+        <div>
         <form onSubmit={handleSubmit} >
+            <Text as="h2" className="bold">Авторизация</Text>
             <input  name="login" onChange={handleImput} placeholder="login"/>
             <input  name="password" onChange={handleImput} placeholder="password"/>
-            <Button>Test</Button>
+            <Button>Войти</Button>
         </form>
+        </div>
     </div>
 
     )
