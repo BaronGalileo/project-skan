@@ -1,8 +1,11 @@
 .input-wrapper{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .input-element{
    width: 90%;
+   margin: 6px;
+   border-radius: 5px;
 }

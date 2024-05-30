@@ -5,9 +5,12 @@ import { Text } from "../../components/Text/Text"
 import { SelectBox } from "../../components/SelectBox/SelectBox"
 import { Checkbox } from "../../components/Checkbox/Checkbox"
 import { Input } from "../../components/Input/Input"
+import { useSelector } from "react-redux"
 import "./styles.css"
 
 function Search() {
+
+
     const[maxCompleteness, setMaxCompleteness] = useState(false)
     const[businessContext, setBusinessContext] = useState(false)
     const[mainRole, setMainRole] = useState(false)
@@ -22,6 +25,11 @@ function Search() {
     useEffect(() =>{
         console.log(selectChenge)
     }, [selectChenge])
+
+    const showCheckbox = (e) => {
+        const element = e.target.nextSibling
+        element.classList.contains("is-visible") ? element.classList.remove("is-visible") : element.classList.add("is-visible")
+    }
 
 
     const opti = [
@@ -42,13 +50,16 @@ function Search() {
                     <Input placeholder="от 1 до 1000" name="Document Count Input"  onChange={setInn}>Количество документов в выдаче*</Input>
                 </div>
                 <div className="search-column">
-                    <Checkbox isChecked={maxCompleteness} onChange={setMaxCompleteness}>Признак максимальной полноты</Checkbox>
-                    <Checkbox isChecked={businessContext} onChange={setBusinessContext}>Упоминания в бизнес-контексте</Checkbox>
-                    <Checkbox isChecked={mainRole} onChange={setMainRole}>Главная роль в публикации</Checkbox>
-                    <Checkbox isChecked={riskFactors} onChange={setRiskFactors}>Публикации только с риск-факторами</Checkbox>
-                    <Checkbox isChecked={technicalNews} onChange={setTechnicalNews}>Включать технические новости рынков</Checkbox>
-                    <Checkbox isChecked={calendars} onChange={setCalendars}>Включать анонсы и календари</Checkbox>
-                    <Checkbox isChecked={newsReports} onChange={setNewsReports}>Включать сводки новостей</Checkbox>
+                    <Button className="show-checkbox" onClick={showCheckbox}>Показать дополнительные фильтры</Button>
+                    <div className="show-check">
+                        <Checkbox isChecked={maxCompleteness} onChange={setMaxCompleteness}>Признак максимальной полноты</Checkbox>
+                        <Checkbox isChecked={businessContext} onChange={setBusinessContext}>Упоминания в бизнес-контексте</Checkbox>
+                        <Checkbox isChecked={mainRole} onChange={setMainRole}>Главная роль в публикации</Checkbox>
+                        <Checkbox isChecked={riskFactors} onChange={setRiskFactors}>Публикации только с риск-факторами</Checkbox>
+                        <Checkbox isChecked={technicalNews} onChange={setTechnicalNews}>Включать технические новости рынков</Checkbox>
+                        <Checkbox isChecked={calendars} onChange={setCalendars}>Включать анонсы и календари</Checkbox>
+                        <Checkbox isChecked={newsReports} onChange={setNewsReports}>Включать сводки новостей</Checkbox>
+                    </div>
                 </div>
                 </div>
                 <div className="search-element">
@@ -61,6 +72,7 @@ function Search() {
                 </div>
                 <div className="search-column">
                     <Button className="btn-search" disabled>Поиск</Button>
+                    <Text>* Обязательные к заполнению поля</Text>
                 </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import { Account } from "../Account/Account";
 
 
 
+
 function Layout() {
 
     const isAuth = useSelector(state => state.auth);
@@ -19,8 +20,8 @@ function Layout() {
                 <Img className="logo" src="./images/logo.png" alt="logo image"/>
                 <div className="box-link">
                     <NavLink to="/">Главная</NavLink>
-                    <NavLink to="#" >Тарифы</NavLink>
-                    <NavLink to="#" >FAQ</NavLink>
+                    <NavLink to="" >Тарифы</NavLink>
+                    <NavLink to="" >FAQ</NavLink>
                 </div>
                 <div className="box">
                     {isAuth.isAuth &&
@@ -30,7 +31,7 @@ function Layout() {
      
             </header>
             <main>
-                <Outlet/>
+                <Outlet/>            
             </main>
             <footer>
                 <div className="conteyner futer">

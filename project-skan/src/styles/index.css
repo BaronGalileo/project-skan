@@ -1,4 +1,7 @@
 @import url("./font.css");
+@import url("../pages/SearchPage/styles.css");
+@import url("../components/SelectBox/styles.css");
+
 
 body {
   text-align: center; 
@@ -92,8 +95,6 @@ header {
   justify-content: space-between;
   width: 95%;
   height: auto;
-  margin-left: 5%;
-  margin-right: 5%;
   
 }
 
@@ -283,7 +284,8 @@ input {
 }
 
 footer {
-  background-color: rgb(8, 167, 119);  
+  justify-content: space-between;
+  background-color: rgb(2 148 145);  
 }
 
 .fon {
@@ -478,6 +480,20 @@ footer {
   }
 }
 
+@media (max-width: 920px) {
+.page-search-wrapper{
+  display: grid;
+  align-content: start
+}
+.search-wrapper {
+  width: 90%;
+}
+
+.search_img {
+  width: 80%;
+}
+}
+
 @media (max-width: 730px) {
   .box-link {
     visibility: hidden;
@@ -521,6 +537,36 @@ footer {
     height: 700px;
    }
 }
+
+@media (max-width: 540px) {
+  .search-element{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn-search {
+  width: 160px;
+  padding:7px 35px 7px 25px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  align-content: center;
+}
+.show-check{
+  visibility: hidden;
+  position: absolute;
+}
+
+.is-visible {
+  visibility: visible;
+  position: static;
+}
+
+
+.show-checkbox {
+  visibility: visible;
+}
+
+  }
 
 @media (max-width: 505px) {
   .lock {
@@ -588,25 +634,22 @@ footer {
     flex-wrap: wrap;
     width: 95%;
     height: auto;
-    margin-left: 5%;
-    margin-right: 5%;   
   }
 
   .logo {
-    width: 200px;
+    width: 150px;
   }
 
   .lock {
     width: 80px;
     position: absolute;
-    top: 680px;
+    top: 72%;
   }
 
   .imageBelowText {
     position: absolute;
-    top: 800px;
+    top: 125%;
     width: 80%;
-    height: auto;
   }
 
   .txtImg {
@@ -616,13 +659,6 @@ footer {
   .rates_logo {
     width:80px;
   }
-
-  .imageBelowText {
-    position: absolute;
-    top: 120%;
-
-  }
-
 }
 
 @media (max-width: 380px) {
@@ -633,7 +669,15 @@ footer {
   .textAdjacentImg {
     font-size: 2.5rem;
   }
-
+  .mobile_form {
+    width: 90%;
+    align-content: center;
+  }
+  .conteyner_form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 }
 
 

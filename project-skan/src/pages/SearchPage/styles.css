@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    margin: 5px;
+    padding: 5px;
 }
 
 .search-wrapper {
@@ -10,6 +12,7 @@
     width: 70%;
     border-radius: 10px;
     padding: 5px;
+    background-color: rgb(255 255 255);
     box-shadow:
         0 0 6px rgba(240, 7, 7, 0) inset,
         0 1px 1px 1px rgba(86, 90, 90, 0.5),
@@ -18,17 +21,28 @@
 
 .search-element{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .search-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-search {
-    width: 150px;
+    width: 200px;
+    padding:7px 35px 7px 25px;
+    border-radius: 10px;
+    font-size: 1.5rem;
 }
 
 .search_img {
     width: 30%;
+}
+
+.show-checkbox {
+    visibility:hidden;
 }

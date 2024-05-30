@@ -27,9 +27,9 @@ function FormLogin (){
 
     const path = "https://gateway.scan-interfax.ru/api/v1/account/login"
     
-    function handleImput(e) {
-        setUser({...user, [e.target.name]: e.target.value})
-    }
+    // function handleImput(e) {
+    //     setUser({...user, [e.target.name]: e.target.value})
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -64,7 +64,7 @@ function FormLogin (){
                 </div>
                 <Input name="login" value={user} onChange={setUser}>Логин или номер телефона:</Input>
                 <Input name="password" value={user} onChange={setUser}>Пароль:</Input>
-                <Button className="btn_login"disabled>Войти</Button>
+                <Button className="btn_login"disabled onClick={handleSubmit}>Войти</Button>
                 <Text as="a" className="href-line" href="#">Восстановить пароль</Text>
                 <Text className="left" > Войти через:</Text>
             </form>
