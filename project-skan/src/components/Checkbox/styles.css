@@ -1,0 +1,12 @@
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    height: 30px;
+}
+
+.checkbox-element {
+    width: auto;
+    padding: 15px;
+}

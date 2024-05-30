@@ -1,0 +1,12 @@
+.select-wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.select-element{
+    margin: auto;
+    padding: 5px;
+    width: 95%;
+ }
+

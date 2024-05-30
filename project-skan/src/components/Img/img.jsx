@@ -1,7 +1,14 @@
 import React from "react";
+import classNames from "classnames";
 
 function Img({ className, src = "defaultNoData.png", alt = "testImg", ...restProps }){
-    return <img className={className}
+
+    const classes = classNames(
+        "img",
+        className,
+    )
+
+    return <img className={classes}
                 src={src} 
                 alt={alt} 
                 {...restProps} 

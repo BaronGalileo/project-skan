@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { Button } from "./Button";
+import { Button } from "../Button/Button";
 import { useSelector } from "react-redux";
-import { TextImage } from "./TextAndImage";
+import { TextImage } from "../TextImage/TextAndImage";
 
 
 function TestBox(){
@@ -26,7 +26,7 @@ function TestBox(){
 
     return(
     <Fragment>
-        <TextImage font="h1" src="./images/auth1.png">Привет</TextImage>
+        <TextImage font-size="2em" font="h1" src="./images/auth1.png">Привет</TextImage>
         <h2><span>1. Text and onClick function</span></h2>
         <Button onClick={() => {console.log("!!!!")}}>Button text</Button>
 
@@ -45,4 +45,4 @@ function TestBox(){
     </Fragment>
     )
 }
-export default TestBox
+export  {TestBox}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getDataFromApi } from "../helpers/promeseFromApi";
-import { Text } from "./Text";
+import { getDataFromApi } from "../../helpers/promeseFromApi";
+import { Text } from "../Text/Text";
 
 
 function Traffic() {

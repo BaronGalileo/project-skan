@@ -1,19 +1,98 @@
 .btn {
-    background-color: aqua;
-}
-
- .btn.active {
-    color: brown;
-    background-color: burlywood;
-}
-
-
-
-a.btn {
-    height: 20px;
+    display: inline-block;
+    margin: 5px;
+    font-family: Bold,'Courier New', Courier, monospace;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     width: auto;
-    padding: 2px;
-    margin: 1px;
-    border: 1px solid #000;
+    height: auto;
+    line-height: 2em;
+    vertical-align: middle;
+    text-align: center;
     text-decoration: none;
+    user-select: none;
+    color: rgb(0,0,0);
+    outline: none;
+    border: 1px solid rgba(0,0,0,.4);
+    border-top-color: rgba(0,0,0,.3);
+    border-radius: 2px;
+    background: rgb(20, 228, 210);
+    /* background: linear-gradient(rgb(156, 255, 255), rgb(240,240,240)); */
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(255,255,255,.2),
+     0 -1px 1px 1px rgba(0,0,0,0);
+    transition: .2s ease-in-out;
+  }
+  .btn:hover:not(:active) {
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(0,255,255,.5),
+     0 -1px 1px 1px rgba(0,255,255,.5);
+  }
+  .btn:active {
+    background: linear-gradient(rgb(3, 100, 79), rgb(235,235,235));
+    box-shadow:
+     0 0 3px rgba(0,0,0,.5) inset,
+     0 1px 1px 1px rgba(221, 162, 162, 0.4),
+     0 -1px 1px 1px rgba(0,0,0,.1);
+  }
+
+  .btn:disabled {
+    background-color: #5970ff87;
+    /* background: linear-gradient(rgb(230, 174, 174), rgb(253, 252, 252)); */
+    color: rgb(255 255 255);
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(255, 255, 255, 0.5),
+     0 -1px 1px 1px rgba(255, 255, 255, 0.5);
+  }
+
+  .btn:disabled:hover:not(:active) {
+    box-shadow:
+     0 0 3px rgba(0,0,0,0) inset,
+     0 1px 1px 1px rgba(241, 3, 3, 0.5),
+     0 -1px 1px 1px rgba(247, 3, 3, 0.5);
+  }
+
+
+
+  #arrowL {
+    background-color: #11ffee00;
+    background-repeat: no-repeat;
+    color: rgb(174, 187, 187);
+    border: none;
+    padding: 25px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;   
 }
+
+#arrowL:active {
+  background-color: #11ffee00;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 25px;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
+#arrowL:disabled {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0) inset, 0 1px 1px 1px rgba(241, 3, 3, 0.5), 0 -1px 1px 1px rgba(247, 3, 3, 0.5);
+  visibility: hidden;
+}
+
+#arrowL:hover:not(:active) {
+  color: #000;
+  box-shadow: none;
+  background: none;
+}
+
+
+
+
+  
+  

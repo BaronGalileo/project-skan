@@ -1,9 +1,9 @@
 import React from "react";
-import { Img } from "./img";
-import { Button } from "./Button";
+import { Img } from "../Img/img";
+import { Button } from "../Button/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { removeAuth } from "../store/authSlice"
-import { Text } from "./Text";
+import { removeAuth } from "../../store/authSlice"
+import { Text } from "../Text/Text";
 
 
 function Account() {
@@ -16,19 +16,19 @@ function Account() {
         dispatch(removeAuth())
     }
 
-    console.log("isAuth.isAuth.login",isAuth)
     return(
-        <div >
+        <div className="right_block">
         {isAuth.isAuth ? 
             <div className="login">
+                <Img className="foto-acc" src="./images/keyaccount.png" alt="foto-acc image"/>
                 <div className="acc">
                     <Text>{isAuth.username}</Text>
                     <Button href="/" onClick={disconect} >Выйти</Button>
                 </div>
-                <Img className="foto-acc" src="./images/keyaccount.png" alt="foto-acc image"/>
             </div> : 
             <div className="login">
                 <Button href="#">Зарегистрироваться</Button>
+                <hr/>
                 <Button href="http://localhost:3000/login">Войти</Button>
             </div>
         }
