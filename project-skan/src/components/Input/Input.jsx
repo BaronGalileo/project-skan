@@ -3,10 +3,12 @@ import './styles.css'
 import { Text } from "../Text/Text";
 
 
-function Input({name, onChange, value, children, ...restProps}) {
+function Input({onlyValue, name, onChange, values, children, ...restProps}) {
 
     const handleChange = (e) => {
-        onChange({...value, [e.target.name]: e.target.value})
+        onlyValue ? onChange(e.target.value) : onChange({...values, [e.target.name]: e.target.value})
+        // console.log(e.target.value)
+        // onChange({...values, [e.target.name]: e.target.value})
     }
 
     return (

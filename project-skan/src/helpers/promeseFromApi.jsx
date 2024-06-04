@@ -2,10 +2,14 @@ import axios from "axios";
 
 // path url api
 // auth данные аутенцификации храняться в redux store
-function getDataFromApi(path, auth) {
+// post string означает POST запрос
+function getDataFromApi(path, auth, request, post) {
+        
+        if(post) {
+             return axios.post(path, { headers: {"Authorization" : `Bearer ${auth.token}`} }, request)   
+        }
 
-
-        return axios.get(path, { headers: {"Authorization" : `Bearer ${auth.token}`} })
+        else return axios.get(path, { headers: {"Authorization" : `Bearer ${auth.token}`} }, request)
 
 }
 
