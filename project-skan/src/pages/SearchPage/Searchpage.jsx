@@ -11,6 +11,7 @@ import axios from "axios"
 import { ColendarComponent } from "../../components/ColendarComponent/ColendarComponent"
 
 import "./styles.css"
+import { SearchFormHidden } from "../../components/SearchComponentHidden/SearchComponentHidden"
 import { element } from "prop-types"
 
 
@@ -18,11 +19,58 @@ function Search() {
 
   const {
     handleSubmit,
-    formState: {isValid, errors},
+    setValue,
+    formState: {isValid},
 
   } = useFormContext()
 
-  const [selectTonality, setSelectTonality] = useState({value:"any"})
+
+
+
+  const defVal = {
+    issueDateInterval: {
+      startDate: '',
+      endDate: '',
+    },
+    searchContext: {
+      targetSearchEntitiesContext: {
+        targetSearchEntities: [
+          {
+            type: "company",
+            sparkId: null,
+            entityId: null,
+            inn: '',
+            maxFullness: '',
+            inBusinessNews: ''
+          }
+        ],
+        onlyMainRole: '',
+        tonality: '',
+        onlyWithRiskFactors: '',
+      },
+    },
+    searchArea: {
+      includedSources: [],
+      excludedSources: [],
+      includedSourceGroups: [],
+      excludedSourceGroups: []
+    },
+    attributeFilters: {
+      excludeTechNews: '',
+      excludeAnnouncements: '',
+      excludeDigests: '',
+    },
+    similarMode: "duplicates",
+    limit: '',
+    sortType: "sourceInfluence",
+    sortDirectionType: "desc",
+    intervalType: "month",
+    histogramTypes: [
+      "totalDocuments",
+      "riskFactors"
+    ]
+  }
+    
 
   const isAuth = useSelector(state => state.auth)
 
@@ -37,53 +85,12 @@ function Search() {
   const conf = { headers: {"Authorization" : `Bearer ${isAuth.token}`}}
 
 
-      // const dataToSend = {
-      //   issueDateInterval: {
-      //     startDate: '',
-      //     endDate: '',
-      //   },
-      //   searchContext: {
-      //     targetSearchEntitiesContext: {
-      //       targetSearchEntities: [
-      //         {
-      //           type: "company",
-      //           sparkId: null,
-      //           entityId: null,
-      //           inn: '',
-      //           maxFullness: '',
-      //           inBusinessNews: ''
-      //         }
-      //       ],
-      //       onlyMainRole: '',
-      //       tonality: '',
-      //       onlyWithRiskFactors: '',
-      //     },
-      //   },
-      //   searchArea: {
-      //     includedSources: [],
-      //     excludedSources: [],
-      //     includedSourceGroups: [],
-      //     excludedSourceGroups: []
-      //   },
-      //   attributeFilters: {
-      //     excludeTechNews: '',
-      //     excludeAnnouncements: '',
-      //     excludeDigests: '',
-      //   },
-      //   similarMode: "duplicates",
-      //   limit: '',
-      //   sortType: "sourceInfluence",
-      //   sortDirectionType: "desc",
-      //   intervalType: "month",
-      //   histogramTypes: [
-      //     "totalDocuments",
-      //     "riskFactors"
-      //   ]
-      // }
-
 
   const onSubmit = (data) => {
-      console.log("DATA",data)
+     console.log("DATA",data )
+      axios.post(path, data, conf).then(res =>
+        console.log(res.data)
+      )
     }
 
 
@@ -97,32 +104,51 @@ function Search() {
     console.log(data)
   }
 
+  
+  let countCheckeds = 0
 
+const checkedNull = (e) => {
+  const element = e.target
+  if(element.checked && countCheckeds < 2){
+    countCheckeds ++
+    return (!element.checked, countCheckeds)
+  }
+  else if (!element.checked && countCheckeds < 2){
+    countCheckeds ++
+    return (element.checked, countCheckeds)
+  }
+  else if(countCheckeds = 2){
+    return(element.checked = null,
+      element.indeterminate = true,
+      countCheckeds = 0
+    )
+  }
 
+}
 
 
 
         
-  return(    
+  return( 
     <div className="page-search-wrapper">
             <div className="search-wrapper">
               <form onSubmit={handleSubmit(onSubmit, errorSubmit)}>
                 <div className="search-element">
                 <div className="search-column">
-                    <Input placeholder="10 цифр" name="searchContext.targetSearchEntitiesContext.targetSearchEntities.inn" message="Обязательно заполнить!">ИНН компании*</Input>
-                    <SelectBox options={tonality} onChange={setSelectTonality} placeholder={"Любая"}>Тональность</SelectBox>
-                    <Input  placeholder="от 1 до 1000" name="limit" message="Обязательно заполнить!">Количество документов в выдаче*</Input>
+                    <Input type="number" placeholder="10 цифр" name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.inn" message="Обязательное поле! Только числа">ИНН компании*</Input>
+                    <SelectBox options={tonality} defaultSelect={"any"} name="searchContext.targetSearchEntitiesContext.tonality" placeholder={"Любая"}>Тональность</SelectBox>
+                    <Input  type="number" placeholder="от 1 до 1000" name="limit" message="Обязательное поле! Только числа">Количество документов в выдаче*</Input>
                 </div>
                 <div className="search-column">
                     <Button className="show-checkbox" onClick={showCheckbox}>Показать дополнительные фильтры</Button>
                     <div className="show-check">
-                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.maxFullness" >Признак максимальной полноты</Checkbox>
-                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.inBusinessNews" >Упоминания в бизнес-контексте</Checkbox>
-                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.onlyMainRole" >Главная роль в публикации</Checkbox>
-                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.onlyWithRiskFactors" >Публикации только с риск-факторами</Checkbox>
-                        <Checkbox  name="excludeTechNews" >Исключить технические новости</Checkbox>
-                        <Checkbox  name="excludeAnnouncements" >Исключить анонсы и события</Checkbox>
-                        <Checkbox  name="excludeDigests" >Исключить сводки новостей</Checkbox>
+                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.maxFullness" >Признак максимальной полноты</Checkbox>
+                        <Checkbox onChange={checkedNull} name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.inBusinessNews" >Упоминания в бизнес-контексте</Checkbox>
+                        <Checkbox  name="searchContext.targetSearchEntitiesContext.onlyMainRole" >Главная роль в публикации</Checkbox>
+                        <Checkbox  name="searchContext.targetSearchEntitiesContext.onlyWithRiskFactors" >Публикации только с риск-факторами</Checkbox>
+                        <Checkbox  name="attributeFilters.excludeTechNews" >Исключить технические новости</Checkbox>
+                        <Checkbox  name="attributeFilters.excludeAnnouncements" >Исключить анонсы и события</Checkbox>
+                        <Checkbox  name="attributeFilters.excludeDigests" >Исключить сводки новостей</Checkbox>
                     </div>
                 </div>
                 </div>
@@ -136,7 +162,8 @@ function Search() {
                 <div className="search-column">
                     <Button className="btn-search" type="submit" onClick={handleSubmit(onSubmit)} disabled={!isValid}>Поиск</Button>
                     <Text as="a" onClick={handleSubmit(errorSubmit)} >* Обязательные к заполнению поля</Text>
-                    <Button >Test</Button>
+                    <SearchFormHidden/>
+
                 </div>
                 </div>
               </form>

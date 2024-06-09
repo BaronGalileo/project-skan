@@ -13,7 +13,7 @@ import { useForm, FormProvider } from "react-hook-form";
 function App() {
 
   const methods = useForm({
-    mode: 'onBlur',
+    mode: 'onBlur'
   })
 
   return (

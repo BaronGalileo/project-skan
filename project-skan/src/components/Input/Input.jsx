@@ -5,7 +5,7 @@ import {  useFormContext } from "react-hook-form"
 import { findKey } from "../../helpers/promeseFromApi";
 
 
-function Input({name,  message, children, ...restProps}) {
+function Input({name,  message, valueAsNumber, children, ...restProps}) {
 
     const {
         register,
@@ -13,7 +13,7 @@ function Input({name,  message, children, ...restProps}) {
     } = useFormContext()
 
    
-
+    //для имени с глубиной вложености
     const errorName =(errors, name) => {
         const nameError = name.split('.')
         const result = findKey(errors, nameError)
@@ -32,6 +32,7 @@ function Input({name,  message, children, ...restProps}) {
             <input
             {...register(name, {
                 required: message? `${message}`: false,
+                valueAsNumber:{valueAsNumber}
             })}
             {...restProps}
             className={(error ? "error " : "") +"input-element"}         

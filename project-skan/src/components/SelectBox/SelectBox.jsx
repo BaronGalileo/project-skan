@@ -1,27 +1,30 @@
 import React from "react";
 import "./styles.css"
 import { Text } from "../Text/Text";
+import {  useFormContext } from "react-hook-form"
 
 
-function SelectBox({options, onChange, children, placeholder, ...restProps}) {
+function SelectBox({options, name, children, placeholder, defaultSelect, ...restProps}) {
+
+  const {
+    register
+} = useFormContext()
 
 
 
 
-    const handleChange = (e) => {
-        onChange({value: e.target.value});
-      }
+ 
 
   return(
 
 
     <label className="select-wrapper">
       <Text className="left">{children}</Text>
-      <select 
+      <select
+        {...register(name)}
         className="select-element" 
-        onChange={handleChange}
         {...restProps}>
-        <option value="" disabled selected hidden>{placeholder}</option>
+        <option value={defaultSelect}>{placeholder}</option>
         {options.map(index => {
         return(<option key={index.value} value={index.value}>{index.text}</option>)
         })}

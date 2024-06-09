@@ -16,7 +16,7 @@ const ColendarComponent = () => {
     const {
         register,
         setValue,
-        formState: {errors}
+        formState: {errors},
     }  = useFormContext()
 
     const[calendarStart, setCalendarStart] = useState('')
