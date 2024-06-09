@@ -7,15 +7,20 @@ import Search from "./pages/SearchPage/Searchpage";
 import Result from "./pages/ResultPage/Resultpage";
 import { Test } from "./pages/TestPage/Test";
 import { Examination } from "./store/examinationToken";
+import { useForm, FormProvider } from "react-hook-form";
 
 
 function App() {
 
+  const methods = useForm({
+    mode: 'onBlur',
+  })
 
   return (
     <div className="App">
-      <Examination/>
-      <Routes>
+      <FormProvider {...methods}>
+        <Examination/>
+        <Routes>
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path="login" element={<Login />}/>
@@ -25,8 +30,8 @@ function App() {
           <Route path="test" element={<Test/>}/>
         </Route>
         <Route path="/dom" element={<Test/>}/>
-      </Routes>
-
+        </Routes>
+      </FormProvider>
     </div>
   );
 }

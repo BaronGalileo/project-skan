@@ -1,6 +1,6 @@
 .checkbox-wrapper {
     display: flex;
-    align-items: center;
+    align-items: start;
     width: 100%;
     padding: 10px;
     height: 30px;

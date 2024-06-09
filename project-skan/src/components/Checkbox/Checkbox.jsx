@@ -1,17 +1,25 @@
 import React from "react";
 import "./styles.css"
 import { Text } from "../Text/Text";
+import {  useFormContext } from "react-hook-form";
 
 
 
-function Checkbox({isChecked, onChange, children, ...restProps}) {
+
+function Checkbox({name,  children, ...restProps}) {
+
+    const {
+        register,
+    } = useFormContext()
+
+
     return (
         <label className="checkbox-wrapper">
             <input
                 {...restProps}
+                {...register(name, {
+                })}
                 type="checkbox"
-                checked={isChecked}
-                onChange={() => onChange((old) => !old)}
                 className="checkbox-element"
             />
             <Text className="left">{children}</Text>

@@ -1,7 +1,8 @@
 
 
 .calendar-wrapper {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
@@ -9,7 +10,22 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 40px;
+    top: 136px;
     border: 1px solid #ccc;
     z-index: 999;
 }
+
+.input-element-date.error {
+    border-color: brown;
+}
+
+span {
+    font-size: 14px;
+    color: red;
+}
+
+.input-element-date{
+    width: 90%;
+    margin: 6px;
+    border-radius: 5px;
+ }

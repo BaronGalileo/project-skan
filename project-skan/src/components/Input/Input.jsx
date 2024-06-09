@@ -1,24 +1,40 @@
 import React from "react";
 import './styles.css'
 import { Text } from "../Text/Text";
+import {  useFormContext } from "react-hook-form"
+import { findKey } from "../../helpers/promeseFromApi";
 
 
-function Input({onlyValue, name, onChange, values, children, ...restProps}) {
+function Input({name,  message, children, ...restProps}) {
 
-    const handleChange = (e) => {
-        onlyValue ? onChange(e.target.value) : onChange({...values, [e.target.name]: e.target.value})
-        // console.log(e.target.value)
-        // onChange({...values, [e.target.name]: e.target.value})
-    }
+    const {
+        register,
+        formState: {errors}
+    } = useFormContext()
+
+   
+
+    const errorName =(errors, name) => {
+        const nameError = name.split('.')
+        const result = findKey(errors, nameError)
+        return result
+
+    }    
+
+    const error = errorName(errors, name)?.message;
+
+
 
     return (
         <label className="input-wrapper">
             <Text className="left">{children}</Text>
+            <span>{error}</span>
             <input
+            {...register(name, {
+                required: message? `${message}`: false,
+            })}
             {...restProps}
-            name={name}
-            className="input-element"
-            onChange={handleChange}
+            className={(error ? "error " : "") +"input-element"}         
             />
         </label>
     )

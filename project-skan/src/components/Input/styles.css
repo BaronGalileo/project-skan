@@ -9,3 +9,18 @@
    margin: 6px;
    border-radius: 5px;
 }
+
+.input-element.error {
+    border-color: brown;
+}
+
+.input-wrapper span {
+    font-size: 14px;
+    color: red;
+}
+
+input {
+    width: 90%;
+    margin: 5px;
+    padding: 5px;
+}
