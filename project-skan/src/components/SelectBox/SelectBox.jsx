@@ -12,9 +12,6 @@ function SelectBox({options, name, children, placeholder, defaultSelect, ...rest
 
 
 
-
- 
-
   return(
 
 

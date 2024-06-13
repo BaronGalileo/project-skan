@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getDataFromApi } from "../../helpers/promeseFromApi";
 import { Text } from "../Text/Text";
+import axios from "axios";
+
 
 
 function Traffic() {
@@ -13,7 +14,7 @@ function Traffic() {
     const auth = useSelector(state => state.auth)
 
     useEffect(() => {
-        getDataFromApi(puth, auth).then(res => {
+        axios.get(puth, auth.confermAut).then(res => {
             setInfo(res.data.eventFiltersInfo)
         })
     }, [auth])
@@ -30,9 +31,8 @@ function Traffic() {
     
 
     return(
-        <div>
-            <h2>Ничего нету</h2>
-            <p>крутиться колесико</p>
+        <div className="spiner">
+            <span class="loader-spiner"></span>
         </div>
     )
 }

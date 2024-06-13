@@ -2,7 +2,7 @@ import React from "react";
 import './styles.css'
 import { Text } from "../Text/Text";
 import {  useFormContext } from "react-hook-form"
-import { findKey } from "../../helpers/promeseFromApi";
+import { findKey } from "../../helpers/findKey";
 
 
 function Input({name,  message, valueAsNumber, children, ...restProps}) {
@@ -32,7 +32,7 @@ function Input({name,  message, valueAsNumber, children, ...restProps}) {
             <input
             {...register(name, {
                 required: message? `${message}`: false,
-                valueAsNumber:{valueAsNumber}
+                valueAsNumber: valueAsNumber? `${valueAsNumber}` : false
             })}
             {...restProps}
             className={(error ? "error " : "") +"input-element"}         

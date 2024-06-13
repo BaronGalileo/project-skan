@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 
 
-const Text = ({ children, className = "", as, ...restProps}) => {
+const Text = ({ children, clear, className = "", as, ...restProps}) => {
 
     const classes = classNames(
-        'txt',
+        !clear? 'txt' : null,
         className,
     )
     const Component = as || "p";

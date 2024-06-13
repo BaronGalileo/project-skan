@@ -1,11 +1,72 @@
 @import url("./font.css");
 @import url("../pages/SearchPage/styles.css");
 @import url("../components/SelectBox/styles.css");
+@import url("../components/Slider/styles.css");
 
 
 body {
   text-align: center; 
 }
+
+/* loader - spiner */
+.spiner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #FFF #FFF transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+
+.spiner::after,
+.spiner::before {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent #FF3D00 #FF3D00;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+.spiner::before {
+  width: 32px;
+  height: 32px;
+  border-color: #FFF #FFF transparent transparent;
+  animation: rotation 1.5s linear infinite;
+}
+    
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}   
+/* loader - spiner */
+
+
 
 .left {
   text-align: start;
@@ -375,6 +436,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 98%;
 }
 
 .img_home {
@@ -537,6 +599,21 @@ footer {
    .mobile_form {
     height: 700px;
    }
+}
+
+@media (max-width: 647px) {
+  .frame-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.frame-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px;
+  margin: 0;
+}
 }
 
 @media (max-width: 540px) {

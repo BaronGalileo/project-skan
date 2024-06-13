@@ -9,7 +9,6 @@ import { Carousel } from "./TestSlider"
 import { TestBox } from "../../components/Test/TestBox"
 import { SliderComponent } from "../../components/Slider/SliderComponent"
 import { FlavorForm } from "./Carusel"
-import { getDataFromApi } from "../../helpers/promeseFromApi";
 import axios from "axios";
 import { useEffect, useState } from "react"
 

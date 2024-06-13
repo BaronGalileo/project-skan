@@ -1,0 +1,17 @@
+.general_summary {
+    display: flex;
+    flex-direction: column;
+}
+
+.grey_txt {
+    color: rgba(158, 175, 192, 0.87);
+}
+
+.columns-spiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 15px;
+}
+

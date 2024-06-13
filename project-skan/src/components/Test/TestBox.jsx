@@ -16,14 +16,6 @@ function TestBox(){
 
     
 
-    // if(auth.token){
-    //     getDataFromApi(api, auth).then(res => {
-    //         console.log("l", res)
-    //     })
-
-    // }
-
-
     return(
     <Fragment>
         <TextImage font-size="2em" font="h1" src="./images/auth1.png">Привет</TextImage>

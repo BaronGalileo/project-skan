@@ -6,7 +6,7 @@ import {  useFormContext } from "react-hook-form";
 
 
 
-function Checkbox({name, onChange,   children, ...restProps}) {
+function Checkbox({name, children, ...restProps}) {
 
     const {
         register,
@@ -20,7 +20,6 @@ function Checkbox({name, onChange,   children, ...restProps}) {
             <input
                 {...restProps}
                 {...register(name, {
-                    onChange: onChange
                 })}
                 type="checkbox"
                 className="checkbox-element"

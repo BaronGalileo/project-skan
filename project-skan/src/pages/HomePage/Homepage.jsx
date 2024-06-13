@@ -12,6 +12,7 @@ function Home() {
     const isAuth = useSelector(state => state.auth);
 
 
+
     
     return(
         <>
@@ -32,7 +33,8 @@ function Home() {
             <SliderComponent src="./images/img_blok.png" classTxt="text">Какой-то тект 5!</SliderComponent>
             <SliderComponent src="./images/img_blok.png" classTxt="text">Какой-то тект 6!</SliderComponent>
             <SliderComponent src="./images/img_blok.png" classTxt="text">Какой-то тект 7!</SliderComponent>
-            <SliderComponent src="./images/img_blok.png" classTxt="text">Какой-то тект 8!</SliderComponent>        </SliderCom>
+            <SliderComponent src="./images/img_blok.png" classTxt="text">Какой-то тект 8!</SliderComponent>     
+        </SliderCom>
         <Img src="/images/img_home2.png" className="img_home"/>
         <Text  as="h3" className="bold">Наши тарифы</Text>
         <Rates/>

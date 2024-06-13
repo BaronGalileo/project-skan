@@ -32,7 +32,10 @@ function FormLogin (){
     const onSubmit = (data) => {
         axios.post(path, data)
         .then(res => {
-            const account = {login: data.login,...res.data}
+            const account = {
+                login: data.login,
+                confermAut : { headers: {"Authorization" : `Bearer ${res.data.accessToken}`}},               
+                ...res.data}
             dispatch(setAuth(account))
         
         })

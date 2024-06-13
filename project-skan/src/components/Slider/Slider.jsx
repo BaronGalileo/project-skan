@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import AliceCarousel from 'react-alice-carousel';
 import { Button } from "../Button/Button";
 import { Img } from "../Img/img";
+import { Text } from "../Text/Text";
 
+import "./styles.css"
 
 
 
@@ -15,7 +17,7 @@ const responsive = {
 
    
     
-function SliderCom ({children, ...restProps}) {
+function SliderCom ({children, frame, responsiveProps, ...restProps}) {
 
     const [indexTarget, setIndexTarget] = useState(0);
 
@@ -31,6 +33,10 @@ function SliderCom ({children, ...restProps}) {
         }
 
     }, [indexTarget])
+
+     
+
+
         
     const handleResize = (e) => {
         setIndexTarget(0)
@@ -101,14 +107,30 @@ function SliderCom ({children, ...restProps}) {
         
         <div className="slider-box">
         <span><Button  clean id="arrowL" className="btn-prev"  onClick={slidePrev}>&lt;</Button></span>
+        {frame &&
+        <div className="frame-wrapper">
+            <div className="frame-element">
+                {frame.map((val) => {
+                    return(<Text className="white bold">{val}</Text>)
+                    })}
+            </div>
             <AliceCarousel
                 activeIndex={indexTarget}
-                // disableDotsControls
+                disableDotsControls
                 disableButtonsControls
                 onSlideChanged={onSlideChanged}
-                responsive={responsive}
+                responsive={responsiveProps? responsiveProps :responsive}
                 mouseTracking items={children}
             />
+        </div>}
+            {!frame &&
+            <AliceCarousel
+                activeIndex={indexTarget}
+                disableButtonsControls
+                onSlideChanged={onSlideChanged}
+                responsive={responsiveProps? responsiveProps :responsive}
+                mouseTracking items={children}
+            />}
             <Button clean id="arrowL" className="btn-next"  onClick={slideNext}>&gt;</Button>
         </div>
         ]

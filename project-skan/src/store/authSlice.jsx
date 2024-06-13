@@ -5,6 +5,7 @@ const initialState = {
     token:  null,
     expire: null,
     isAuth: false,
+    confermAut: null,
 
 }
 
@@ -18,12 +19,14 @@ const authSlice = createSlice({
             state.token = action.payload.accessToken;
             state.expire = action.payload.expire;
             state.isAuth = true;
+            state.confermAut = action.payload.confermAut
         },
         removeAuth(state) {
             state.username = null;
             state.token = null;
             state.expire = null;
             state.isAuth = false;
+            state.confermAut = null;
         }
     },
 

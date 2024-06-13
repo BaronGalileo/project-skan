@@ -7,70 +7,21 @@ import { Checkbox } from "../../components/Checkbox/Checkbox"
 import { Input } from "../../components/Input/Input"
 import { useSelector } from "react-redux"
 import { useFormContext } from "react-hook-form"
-import axios from "axios"
 import { ColendarComponent } from "../../components/ColendarComponent/ColendarComponent"
-
+import axios from "axios";
 import "./styles.css"
 import { SearchFormHidden } from "../../components/SearchComponentHidden/SearchComponentHidden"
-import { element } from "prop-types"
 
 
 function Search() {
 
   const {
     handleSubmit,
-    setValue,
     formState: {isValid},
 
   } = useFormContext()
 
-
-
-
-  const defVal = {
-    issueDateInterval: {
-      startDate: '',
-      endDate: '',
-    },
-    searchContext: {
-      targetSearchEntitiesContext: {
-        targetSearchEntities: [
-          {
-            type: "company",
-            sparkId: null,
-            entityId: null,
-            inn: '',
-            maxFullness: '',
-            inBusinessNews: ''
-          }
-        ],
-        onlyMainRole: '',
-        tonality: '',
-        onlyWithRiskFactors: '',
-      },
-    },
-    searchArea: {
-      includedSources: [],
-      excludedSources: [],
-      includedSourceGroups: [],
-      excludedSourceGroups: []
-    },
-    attributeFilters: {
-      excludeTechNews: '',
-      excludeAnnouncements: '',
-      excludeDigests: '',
-    },
-    similarMode: "duplicates",
-    limit: '',
-    sortType: "sourceInfluence",
-    sortDirectionType: "desc",
-    intervalType: "month",
-    histogramTypes: [
-      "totalDocuments",
-      "riskFactors"
-    ]
-  }
-    
+   
 
   const isAuth = useSelector(state => state.auth)
 
@@ -82,13 +33,15 @@ function Search() {
 
   const path = "https://gateway.scan-interfax.ru/api/v1/objectsearch"
 
-  const conf = { headers: {"Authorization" : `Bearer ${isAuth.token}`}}
+
+
+
 
 
 
   const onSubmit = (data) => {
      console.log("DATA",data )
-      axios.post(path, data, conf).then(res =>
+     axios.post(path, data, isAuth.confermAut).then(res =>
         console.log(res.data)
       )
     }
@@ -101,32 +54,7 @@ function Search() {
   ];
 
   const errorSubmit = (data) => {
-    console.log(data)
   }
-
-  
-  let countCheckeds = 0
-
-const checkedNull = (e) => {
-  const element = e.target
-  if(element.checked && countCheckeds < 2){
-    countCheckeds ++
-    return (!element.checked, countCheckeds)
-  }
-  else if (!element.checked && countCheckeds < 2){
-    countCheckeds ++
-    return (element.checked, countCheckeds)
-  }
-  else if(countCheckeds = 2){
-    return(element.checked = null,
-      element.indeterminate = true,
-      countCheckeds = 0
-    )
-  }
-
-}
-
-
 
         
   return( 
@@ -143,7 +71,7 @@ const checkedNull = (e) => {
                     <Button className="show-checkbox" onClick={showCheckbox}>Показать дополнительные фильтры</Button>
                     <div className="show-check">
                         <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.maxFullness" >Признак максимальной полноты</Checkbox>
-                        <Checkbox onChange={checkedNull} name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.inBusinessNews" >Упоминания в бизнес-контексте</Checkbox>
+                        <Checkbox  name="searchContext.targetSearchEntitiesContext.targetSearchEntities.0.inBusinessNews" >Упоминания в бизнес-контексте</Checkbox>
                         <Checkbox  name="searchContext.targetSearchEntitiesContext.onlyMainRole" >Главная роль в публикации</Checkbox>
                         <Checkbox  name="searchContext.targetSearchEntitiesContext.onlyWithRiskFactors" >Публикации только с риск-факторами</Checkbox>
                         <Checkbox  name="attributeFilters.excludeTechNews" >Исключить технические новости</Checkbox>
@@ -163,7 +91,6 @@ const checkedNull = (e) => {
                     <Button className="btn-search" type="submit" onClick={handleSubmit(onSubmit)} disabled={!isValid}>Поиск</Button>
                     <Text as="a" onClick={handleSubmit(errorSubmit)} >* Обязательные к заполнению поля</Text>
                     <SearchFormHidden/>
-
                 </div>
                 </div>
               </form>
