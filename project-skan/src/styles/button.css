@@ -1,8 +1,8 @@
 .btn {
     display: inline-block;
     margin: 5px;
-    font-family: Bold,'Courier New', Courier, monospace;
-    font-size: 15px;
+    font-family: 'Inter','Courier New', Courier, monospace;
+    font-size: 18px;
     padding-left: 5px;
     padding-right: 5px;
     width: auto;
@@ -90,6 +90,15 @@
   color: #000;
   box-shadow: none;
   background: none;
+}
+
+.show_more {
+  color: rgb(255, 255, 255);
+  background-color: rgb(87, 100, 224);
+  width: 350px;
+  align-self: center;
+  padding: 10px;
+  margin: 15px;
 }
 
 

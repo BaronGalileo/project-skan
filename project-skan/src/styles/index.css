@@ -70,8 +70,8 @@ body {
 
 .left {
   text-align: start;
-  margin: 0;
-  padding: 3px;
+  margin: 3px;
+  padding: 5px;
 }
 
 .page {
@@ -257,7 +257,7 @@ form {
 .inlain_login {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: nowrap;
 }
 
@@ -519,9 +519,9 @@ footer {
 }
 
 
-
-
 @media (max-width: 1000px) {
+
+
   .adjacentTxtImg {
     display: flex;
     flex-wrap: wrap;
@@ -605,13 +605,14 @@ footer {
   .frame-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .frame-element {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  padding: 0px;
+  padding: 0;
   margin: 0;
 }
 }

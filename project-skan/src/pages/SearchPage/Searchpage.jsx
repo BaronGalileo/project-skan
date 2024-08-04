@@ -5,24 +5,31 @@ import { Text } from "../../components/Text/Text"
 import { SelectBox } from "../../components/SelectBox/SelectBox"
 import { Checkbox } from "../../components/Checkbox/Checkbox"
 import { Input } from "../../components/Input/Input"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useFormContext } from "react-hook-form"
 import { ColendarComponent } from "../../components/ColendarComponent/ColendarComponent"
 import axios from "axios";
 import "./styles.css"
 import { SearchFormHidden } from "../../components/SearchComponentHidden/SearchComponentHidden"
+import { Navigate } from "react-router-dom";
+import { removeResult, setResult } from "../../store/resultDataSlice"
+
 
 
 function Search() {
 
+  const[changePage, setChangePage] = useState(false)
+
+  const dispatch = useDispatch();
+
+ 
   const {
     handleSubmit,
     formState: {isValid},
 
   } = useFormContext()
 
-   
-
+ 
   const isAuth = useSelector(state => state.auth)
 
     
@@ -39,10 +46,19 @@ function Search() {
 
 
 
+
   const onSubmit = (data) => {
-     console.log("DATA",data )
-     axios.post(path, data, isAuth.confermAut).then(res =>
-        console.log(res.data)
+     axios.post(path, data, isAuth.confermAut).then(res => {
+      if(res.data.items.length > 0 ) {
+        dispatch(setResult(res.data))
+        setChangePage(true)
+      } 
+      else {
+        dispatch(removeResult())
+        alert("К сожалению ниего не удалось найти. Попробуйте фильтр поменять, тональность или проверьте ИНН")
+      }
+    }
+      
       )
     }
 
@@ -55,6 +71,8 @@ function Search() {
 
   const errorSubmit = (data) => {
   }
+
+  if(changePage) return <Navigate to="/result"/>
 
         
   return( 

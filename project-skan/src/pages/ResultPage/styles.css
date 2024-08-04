@@ -5,6 +5,8 @@
 
 .grey_txt {
     color: rgba(158, 175, 192, 0.87);
+    display: inline;
+    margin: 10px;
 }
 
 .columns-spiner {
@@ -13,5 +15,12 @@
     align-items: center;
     width: 100%;
     padding-left: 15px;
+}
+
+.result_wrapper_card_skan {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+
 }
 

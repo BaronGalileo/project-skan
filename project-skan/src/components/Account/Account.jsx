@@ -3,6 +3,7 @@ import { Img } from "../Img/img";
 import { Button } from "../Button/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { removeAuth } from "../../store/authSlice"
+import { removeResult } from "../../store/resultDataSlice"
 import { Text } from "../Text/Text";
 
 
@@ -12,8 +13,10 @@ function Account() {
 
     const dispatch = useDispatch();
 
+
     const disconect = () => {
         dispatch(removeAuth())
+        dispatch(removeResult())
     }
 
     return(

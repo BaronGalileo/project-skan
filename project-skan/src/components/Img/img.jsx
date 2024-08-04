@@ -1,10 +1,10 @@
 import React from "react";
 import classNames from "classnames";
 
-function Img({ className, src = "defaultNoData.png", alt = "testImg", ...restProps }){
+function Img({ className, clear, src = "defaultNoData.png", alt = "testImg", ...restProps }){
 
     const classes = classNames(
-        "img",
+        !clear? 'img' : null,
         className,
     )
 
