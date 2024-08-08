@@ -12,11 +12,13 @@ import {
 import storage from 'redux-persist/lib/storage' 
 import authReducer from './authSlice'
 import resultDataReducer from './resultDataSlice'
+import histogramsReducer from './histogramsSlice'
 
 
 const rootReducer = combineReducers({
   auth: authReducer,
   resultDataFromSearch: resultDataReducer,
+  histograms: histogramsReducer,
 })
 
 const persistConfig = {

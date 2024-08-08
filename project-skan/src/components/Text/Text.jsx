@@ -3,6 +3,7 @@ import classNames from "classnames";
 
 
 
+
 const Text = ({ children, clear, className = "", as, ...restProps}) => {
 
     const classes = classNames(
@@ -17,6 +18,7 @@ const Text = ({ children, clear, className = "", as, ...restProps}) => {
             className={classes}
         >{children}
         </Component>
+
     );
 };
 

@@ -23,8 +23,8 @@ function Traffic() {
     if(info){
         return(
             <div className="loader">
-                <Text className="trafic">Использовано компаний : <Text className="quantity">{info.usedCompanyCount}</Text></Text>
-                <Text className="trafic">Лимит по компаниям : <Text className="quantity grin">{info.companyLimit}</Text></Text>
+                <Text className="trafic">Использовано компаний : <span className="quantity"> {info.usedCompanyCount}</span></Text>
+                <Text className="trafic">Лимит по компаниям : <span className="quantity grin">{info.companyLimit}</span></Text>
         </div>
         )
     }
@@ -32,7 +32,7 @@ function Traffic() {
 
     return(
         <div className="spiner">
-            <span class="loader-spiner"></span>
+            <span className="loader-spiner"></span>
         </div>
     )
 }

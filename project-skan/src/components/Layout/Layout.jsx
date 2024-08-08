@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import React from "react";
 import { Img } from "../Img/img";
 import { Text } from "../Text/Text";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { Traffic } from "../Traffic/Traffic";
 import { Account } from "../Account/Account";
 

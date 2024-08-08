@@ -18,9 +18,9 @@ function Home() {
         <>
         <div className="adjacentTxtImg">
             <div className="acc">
-                <Text font-size="4em" className="textAdjacentImg" as="h1">сервис по поиску публикаций о компании по его ИНН</Text>
+                <Text fontSize="4em" className="textAdjacentImg" as="h1">сервис по поиску публикаций о компании по его ИНН</Text>
                 <Text className="text">Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.</Text>
-                {isAuth.isAuth && <Button  href="/search" onClick={() => {console.log("!!!!")}} className="request">Запросить данные</Button>}
+                {isAuth.isAuth && <Button  href="/search"  className="request">Запросить данные</Button>}
             </div>
             <Img className="imgAdjacentText" src="./images/img_home.png"/>
             

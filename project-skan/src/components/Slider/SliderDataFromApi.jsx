@@ -1,22 +1,23 @@
 import React from "react";
 import "./styles.css";
 import { Text } from "../Text/Text";
+import format from "date-fns/format";
 
 
 const SliderDataFromApi = ({dataFromApi, id, ...restProps}) => {
 
-    const name = dataFromApi.name
+    const date = format(dataFromApi.date, 'dd.MM.yyyy')
 
-    const age = dataFromApi.age
+    const value = dataFromApi.value
 
-    const sex = dataFromApi.sex
+    const riskFactors = dataFromApi.riskFact
 
 
     return (
         <div id={id} className="frame-element not-color">
-            <Text>{name}</Text>
-            <Text>{age}</Text>
-            <Text>{sex}</Text>
+            <Text className="t-blok">{date}</Text>
+            <Text className="t-blok">{value}</Text>
+            <Text className="t-blok">{riskFactors}</Text>
         </div>
     )
 }

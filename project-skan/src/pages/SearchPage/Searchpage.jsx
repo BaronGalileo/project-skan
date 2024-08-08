@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { Img } from "../../components/Img/img"
 import { Button } from "../../components/Button/Button"
 import { Text } from "../../components/Text/Text"
@@ -13,6 +13,8 @@ import "./styles.css"
 import { SearchFormHidden } from "../../components/SearchComponentHidden/SearchComponentHidden"
 import { Navigate } from "react-router-dom";
 import { removeResult, setResult } from "../../store/resultDataSlice"
+import { removeHistograms, setHistograms } from "../../store/histogramsSlice"
+import { unionArray } from "../../helpers/unionArray"
 
 
 
@@ -21,7 +23,6 @@ function Search() {
   const[changePage, setChangePage] = useState(false)
 
   const dispatch = useDispatch();
-
  
   const {
     handleSubmit,
@@ -40,21 +41,25 @@ function Search() {
 
   const path = "https://gateway.scan-interfax.ru/api/v1/objectsearch"
 
-
-
-
-
-
-
+  const pathHistograms = "https://gateway.scan-interfax.ru/api/v1/objectsearch/histograms"
 
   const onSubmit = (data) => {
-     axios.post(path, data, isAuth.confermAut).then(res => {
+
+    axios.post(path, data, isAuth.confermAut).then(res => {
       if(res.data.items.length > 0 ) {
-        dispatch(setResult(res.data))
-        setChangePage(true)
+        dispatch(setResult(res.data));        
+
+        axios.post(pathHistograms, data, isAuth.confermAut).then(re => {  
+          let union = unionArray(re.data) 
+          dispatch(setHistograms(union));         
+          setChangePage(true)
+        })
+        .catch(err => alert("Извените, статус ответа сервера:",err.request.status))
+
       } 
       else {
         dispatch(removeResult())
+        dispatch(removeHistograms())
         alert("К сожалению ниего не удалось найти. Попробуйте фильтр поменять, тональность или проверьте ИНН")
       }
     }

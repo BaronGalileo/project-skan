@@ -4,76 +4,40 @@ import { Button } from "../Button/Button";
 import { Text } from "../Text/Text";
 import { Img } from "../Img/img";
 import format from "date-fns/format";
+import { textOnly } from "../../helpers/textOnly";
 
 
-function CardSkan ({date, title, url, text, themes, wordCount, source}) {
+function CardSkan ({date, title, url, text, isTechNews, isAnnouncement, isDigest, wordCount, source, foto}) {
 
     const time = format(date, 'dd.MM.yyyy')
 
-    const test = "<k>Gh&lt;dss&gt;Привет"
+    const content = textOnly(text)
 
-    function sanitize ( str ) {
+    const techNews = isTechNews? "технические новости": null
 
-        if ( !str ) {
-            return str;
-        }
+    const announcement = isAnnouncement? "анонсы и события": null
 
-        let result = ""
-
-        let ampersand = 0
-
-        let teg = 0
-
-        
-        for(let i = 0 ; i < str.length; i++) {
-
-                if(str[i] === "<") {
-                    teg ++
-                }
-
-                else if (str[i] === ">") {
-                    teg --
-                }
-
-                else if(str[i] === "&" && str[i+1] === "l") {
-                    ampersand ++
-
-                }
-
-                else if(str[i] === "&" && str[i+1] === "g") {
-                    ampersand --
-                    i += 3               
-                }
-
-                else if(teg === 0 && ampersand === 0) {
-
-                result += str[i]
-                }
-
-                else continue
-
-        }
-
-        return result
-    }
-
-
-
-
-    const content = sanitize(text)
+    const digest = isDigest? "сводки новостей": null
 
     return (
         <>
         <div className="wrapper-card_skan">
             <div className="link-and-time">
                 <Text clear className="grey_txt left">{time}</Text>
-                <a><Text clear className="grey_txt">{source}</Text></a>
+                <a href={url}><Text clear className="grey_txt">{source}</Text></a>
             </div>
             <Text className="left" as="h2">{title}</Text>
-            {themes &&
-            <Text className="section-card_skan">{themes}</Text>
+            {techNews &&
+            <Text className="section-card_skan">{techNews}</Text>
             }
-            <Img  clear className="foto-card_skan" src="./images/test_foto.jpg"></Img>
+            {announcement &&
+            <Text className="section-card_skan">{announcement}</Text>
+            }
+            {digest &&
+            <Text className="section-card_skan">{digest}</Text>
+            }
+            {foto && <Img  clear className="foto-card_skan" src={foto}></Img>}
+            {!foto && <Img  clear className="foto-card_skan" src="./images/test_foto.jpg"></Img>}
             <Text clear className="grey_txt left">{content}</Text>
             <div className="footer-card_skan">
                 <Button href={url}>Читать в источнике</Button>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import AliceCarousel from 'react-alice-carousel';
 import { Button } from "../Button/Button";
-import { Img } from "../Img/img";
 import { Text } from "../Text/Text";
 
 import "./styles.css"
@@ -13,7 +12,7 @@ import "./styles.css"
 
 
 const responsive = {
-    0: { items: 1}, 600: { items: 2 }, 1050: { items: 3 }, 1500: { items: 5}}
+    0: { items: 1}, 648: { items: 2 }, 1050: { items: 3 }, 1500: { items: 5}}
 
    
     
@@ -85,7 +84,6 @@ function SliderCom ({children, frame, responsiveProps, ...restProps}) {
     };
     
     const slidePrev = (e) => {
-        console.log("slidePrev", e)
         let element = document.querySelector('.alice-carousel__stage')
         let child = element.children
         let coord = element.style.transform
@@ -110,8 +108,8 @@ function SliderCom ({children, frame, responsiveProps, ...restProps}) {
         {frame &&
         <div className="frame-wrapper">
             <div className="frame-element">
-                {frame.map((val) => {
-                    return(<Text className="white bold">{val}</Text>)
+                {frame.map((val, item) => {
+                    return(<Text key={item} className="white bold">{val}</Text>)
                     })}
             </div>
             <AliceCarousel

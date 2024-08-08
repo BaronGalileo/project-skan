@@ -39,8 +39,17 @@ function FormLogin (){
             dispatch(setAuth(account))
         
         })
-        .catch(err => alert(err))
-        reset()
+        .catch(err => {
+            if(err.request.status === 401){
+                alert("Вы ошиблись! Проверьте Логин и Пароль");
+                reset()
+            }
+            else if(err.request.status >= 500) {
+                alert("Извените, проблема с сервером, попробуйте зайти позже!");
+                reset()
+            }
+
+        })
     }
     
 
@@ -61,7 +70,7 @@ function FormLogin (){
                     </div>
                 </div>
                 <Input name="login" message="Обязательно заполнить!">Логин или номер телефона:</Input>
-                <Input name="password" message="Обязательно заполнить!">Пароль:</Input>
+                <Input name="password"  message="Обязательно заполнить!">Пароль:</Input>
                 <Button className="btn_login" disabled={!isValid}>Войти</Button>
                 <Text as="a" className="href-line" href="#">Восстановить пароль</Text>
                 <Text className="left" > Войти через:</Text>
