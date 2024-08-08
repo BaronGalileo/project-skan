@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeAuth } from "../../store/authSlice"
 import { removeResult } from "../../store/resultDataSlice"
 import { Text } from "../Text/Text";
+import { removeHistograms } from "../../store/histogramsSlice";
 
 
 function Account() {
@@ -15,9 +16,9 @@ function Account() {
 
 
     const disconect = () => {
-        debugger
         dispatch(removeResult())
         dispatch(removeAuth())
+        dispatch(removeHistograms())
     }
 
     return(
