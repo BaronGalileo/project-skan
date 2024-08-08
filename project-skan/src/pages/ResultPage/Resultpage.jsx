@@ -17,14 +17,14 @@ function Result() {
     const isAuth = useSelector(state => state.auth);
 
     const dataFromApi = useSelector(state => state.histograms);
-    
-    const quantity = dataFrom.items.length
-
-    const frame = ["Период", "Всего", "Риски"]
 
     if(!isAuth.isAuth) return <Navigate to="/"/>
 
     else if(!dataFrom.items) return <Navigate to="/search"/>
+
+    const quantity = dataFrom.items.length
+
+    const frame = ["Период", "Всего", "Риски"]
         
     return(
         <>

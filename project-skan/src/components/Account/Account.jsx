@@ -28,7 +28,7 @@ function Account() {
                 <Img className="foto-acc" src="./images/keyaccount.png" alt="foto-acc image"/>
                 <div className="acc">
                     <Text>{isAuth.username}</Text>
-                    <Button href="/" onClick={disconect} >Выйти</Button>
+                    <Button onClick={disconect} href="/">Выйти</Button>
                 </div>
             </div> : 
             <div className="login">
