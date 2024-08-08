@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Text } from "../../components/Text/Text";
 import { Img } from "../../components/Img/img";
 import "./styles.css"
@@ -17,9 +17,6 @@ function Result() {
     const isAuth = useSelector(state => state.auth);
 
     const dataFromApi = useSelector(state => state.histograms);
-
-
-
     
     const quantity = dataFrom.items.length
 

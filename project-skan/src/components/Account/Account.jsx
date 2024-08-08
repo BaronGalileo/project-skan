@@ -15,8 +15,9 @@ function Account() {
 
 
     const disconect = () => {
-        dispatch(removeAuth())
+        debugger
         dispatch(removeResult())
+        dispatch(removeAuth())
     }
 
     return(

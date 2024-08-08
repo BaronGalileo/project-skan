@@ -50,11 +50,16 @@ function Search() {
         dispatch(setResult(res.data));        
 
         axios.post(pathHistograms, data, isAuth.confermAut).then(re => {  
-          let union = unionArray(re.data) 
-          dispatch(setHistograms(union));         
-          setChangePage(true)
+          let union = unionArray(re.data)
+          if(union) {
+            dispatch(setHistograms(union));
+            setChangePage(true)
+          }
+          else alert("К сожалению не нашли ничего.Попробуйте больший отрезок времени.")
+
         })
-        .catch(err => alert("Извените, статус ответа сервера:",err.request.status))
+        .catch(err => {
+          alert("Извените, что-то пошло не так!")})
 
       } 
       else {
