@@ -153,6 +153,10 @@ main {
   font-size: 1.5em;
 }
 
+.grin {
+  color: rgb(27, 182, 27);
+}
+
 header {
   display: flex;
   align-items: center;
