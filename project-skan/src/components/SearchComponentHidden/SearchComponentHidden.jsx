@@ -19,10 +19,7 @@ const SearchFormHidden = () => {
         <input {...register(`similarMode`)} type="hidden" value="none"/>
         <input {...register(`sortType`)} type="hidden" value="issueDate"/>
         <input {...register(`sortDirectionType`)} type="hidden" value="desc"/>
-        <input {...register(`intervalType`)} type="hidden" value="month"/>
-    
-
-        //"searchContext.targetSearchEntitiesContext.onlyWithRiskFactors" 
+        <input {...register(`intervalType`)} type="hidden" value="month"/> 
     </>
     )
 }
